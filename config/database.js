@@ -1,11 +1,9 @@
 const mysql = require('mysql2/promise');
-
-// Azure Database for MySQL requires SSL.
-// For a local MySQL instance, set DB_SSL=false in your .env.
+ 
 const sslOption =
   process.env.DB_SSL === 'false'
     ? undefined
-    : { rejectUnauthorized: true };
+    : { rejectUnauthorized: false };
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
